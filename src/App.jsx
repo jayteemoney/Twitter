@@ -1,22 +1,109 @@
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Nav from "./components/sidebar/nav";
+import Nav from "./components/sidebar/Nav";
+import Home from "./components/feed/Home";
+import Widgets from "./pages/widget";
+import Explore from "./components/feed/explore";
+import ExploreWid from "./components/widgets/exploreWid";
 
 const App = () => {
   return (
     <Router>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<div>Home Page</div>} />
-        <Route path="/explore" element={<div>Explore Page</div>} />
-        <Route path="/notifications" element={<div>Notifications Page</div>} />
-        <Route path="/messages" element={<div>Messages Page</div>} />
-        <Route path="/grok" element={<div>Grok Page</div>} />
-        <Route path="/communities" element={<div>Communities Page</div>} />
-        <Route path="/profile" element={<div>Profile Page</div>} />
-        <Route path="/more" element={<div>More Page</div>} />
-        <Route path="/post" element={<div>Post Page</div>} />
-      </Routes>
+      <div className="min-h-screen bg-black flex mx-auto">
+        {/* Sidebar */}
+        <Nav className="fixed left-0 top-0 h-screen w-[300px] bg-black text-white" />
+
+        {/* Main Content */}
+        <div className="ml-[300px] flex-1">
+          {/* Scrollable Container */}
+          <div className="flex h-screen overflow-y-scroll">
+            <div className="flex justify-center w-full max-w-[1350px] mx-auto">
+              {/* Feed */}
+              <div className="w-[600px] bg-black border-l border-white">
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <>
+                        <Home />
+                      </>
+                    }
+                  />
+                  <Route
+                    path="/explore"
+                    element={
+                      <>
+                        <Explore />
+                      </>
+                    }
+                  />
+                  <Route
+                    path="/notifications"
+                    element={
+                      <>
+                        {/* Notifications content */}
+                      </>
+                    }
+                  />
+                  <Route
+                    path="/messages"
+                    element={
+                      <>
+                        {/* Messages content */}
+                      </>
+                    }
+                  />
+                  <Route
+                    path="/grok"
+                    element={
+                      <>
+                        {/* Grok content */}
+                      </>
+                    }
+                  />
+                  <Route
+                    path="/profile"
+                    element={
+                      <>
+                        {/* Profile content */}
+                      </>
+                    }
+                  />
+                  <Route
+                    path="/more"
+                    element={
+                      <>
+                        {/* More options content */}
+                      </>
+                    }
+                  />
+                </Routes>
+              </div>
+
+              {/* Widgets */}
+              <div className="w-[450px] bg-black text-white border-r border-white">
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <>
+                        <Widgets />
+                      </>
+                    }
+                  />
+                   <Route
+                    path="/explore"
+                    element={
+                      <>
+                        <ExploreWid />
+                      </>
+                    }
+                  />
+                </Routes>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </Router>
   );
 };
