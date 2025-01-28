@@ -1,4 +1,4 @@
-import Nav from "../components/sidebar/Nav";
+import Nav from "../components/sidebar/nav";
 
 
 const Sidebar = () => {

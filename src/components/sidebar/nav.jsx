@@ -11,11 +11,11 @@ import {
 
 const Nav = () => {
   return (
-    <header className="fixed top-0 left-0 w-[300px] h-screen bg-black text-white font-serif shadow-md flex flex-col justify-between p-6">
+    <header className="fixed top-0 left-0 w-[320px] h-screen bg-black text-white font-serif shadow-md flex flex-col justify-between p-6">
       {/* Logo Section */}
       <div className="logo mb-8 pl-12">
         <Link to="/" className="flex items-center space-x-3">
-          <span className="ml-[20px] text-3xl font-bold hover:border hover:bg-gray-600 rounded-[50%]">X</span>
+          <span className="ml-[20px] text-3xl font-bold hover:bg-gray-600 rounded-[50%] p-2">X</span>
         </Link>
       </div>
 
@@ -92,9 +92,7 @@ const Nav = () => {
 
           {/* Profile Name and Username */}
           <div className="flex flex-col">
-            <span className="text-white font-bold text-sm">
-              Jethro Irmiya
-            </span>
+            <span className="text-white font-bold text-sm">Jethro Irmiya</span>
             <span className="text-gray-400 text-sm">@dev_jaytee</span>
           </div>
 

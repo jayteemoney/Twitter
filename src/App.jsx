@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Nav from "./components/sidebar/Nav";
+import Nav from "./components/sidebar/nav";
 import Home from "./components/feed/Home";
 import Widgets from "./pages/widget";
 import Explore from "./components/feed/explore";
@@ -8,7 +8,7 @@ import ExploreWid from "./components/widgets/exploreWid";
 const App = () => {
   return (
     <Router>
-      <div className="min-h-screen bg-black flex mx-auto">
+      <div className="min-h-screen bg-black flex mx-auto font-serif">
         {/* Sidebar */}
         <Nav className="fixed left-0 top-0 h-screen w-[300px] bg-black text-white" />
 
@@ -18,7 +18,7 @@ const App = () => {
           <div className="flex h-screen overflow-y-scroll">
             <div className="flex justify-center w-full max-w-[1350px] mx-auto">
               {/* Feed */}
-              <div className="w-[600px] bg-black border-l border-white">
+              <div className="w-[600px] bg-black ">
                 <Routes>
                   <Route
                     path="/"

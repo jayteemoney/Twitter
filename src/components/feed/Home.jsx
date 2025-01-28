@@ -52,7 +52,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-black text-white flex justify-center items-center font-serif">
       {/* Feed Container */}
-      <div className=" mx-auto w-[850px] bg-black px-4  border-l-1 border-r-1 border-gray-600 pl-15">
+      <div className=" mx-auto w-[550px] bg-black px-4  border-l-1 border-r-1 border-gray-600 pl-15">
         {/* Navigation */}
         <nav className=" flex justify-around  bg-black p-2 rounded-lg">
           <Link to="/" className="text-white font-bold border-b-4 border-blue-500">
@@ -64,7 +64,7 @@ const Home = () => {
         </nav>
 
         {/* Post Input */}
-        <div className=" bg-black border border-gray-600 p-4 rounded-[20px]  mb-10">
+        <div className=" bg-black border border-gray-600 p-4 rounded-[20px]  mb-10 ">
           <div className="flex items-center mb-4">
             <Link to="https://x.com/IrmiyaJeth79445">
               <img
@@ -98,7 +98,7 @@ const Home = () => {
             {index > 0 && (
               <hr className=" border-gray-600 my-8 w-full" />
             )}
-            <div className="post bg-black border border-gray-600 p-4 rounded-[20px] shadow-sm">
+            <div className="post bg-black border border-gray-600 p-4 rounded-[20px] text-[15px]">
               <div className="content mb-4">
                 <h3 className="font-bold">{post.author}</h3>
                 <p className="text-sm text-gray-400">{post.username}</p>

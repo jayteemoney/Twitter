@@ -1,35 +1,31 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <div>
-      {/* Footer Section */}
-      <section className="mt-6">
-        <ul className="text-sm text-gray-500 space-y-2">
-          <Link to="/" className="hover:underline">
-            <li>Terms of Services</li>
-          </Link>
-          <Link to="/" className="hover:underline">
-            <li>Privacy Policy</li>
-          </Link>
-          <Link to="/" className="hover:underline">
-            <li>Cookies Policy</li>
-          </Link>
-          <Link to="/" className="hover:underline">
-            <li>Accessibility</li>
-          </Link>
-          <Link to="/" className="hover:underline">
-            <li>Ads Info</li>
-          </Link>
-          <Link to="/" className="hover:underline">
-            <li>More</li>
-          </Link>
-        </ul>
-        <div className="mt-4 text-center text-sm text-gray-400">
-          Created by <span className="font-semibold">jaytee</span> | All rights reserved
-        </div>
-      </section>
-    </div>
-  )
-}
+    <footer className="w-[300px] bg-black text-gray-500 text-xs py-4">
+      <div className="flex flex-wrap justify-center items-center gap-4">
+        <Link to="/terms" className="hover:underline transition">
+          Terms of Service
+        </Link>
+        <Link to="/privacy" className="hover:underline transition">
+          Privacy Policy
+        </Link>
+        <Link to="/cookies" className="hover:underline transition">
+          Cookie Policy
+        </Link>
+        <Link to="/accessibility" className="hover:underline transition">
+          Accessibility
+        </Link>
+        <Link to="/ads" className="hover:underline transition">
+          Ads Info
+        </Link>
+        <Link to="/more" className="hover:underline transition">
+          More ...
+        </Link>
+        <span>© 2025 X Corp.</span>
+      </div>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;
