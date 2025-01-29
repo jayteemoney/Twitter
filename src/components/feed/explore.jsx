@@ -43,7 +43,6 @@ const Explore = () => {
 
         {/* Trends Section */}
         <div className="Trends">
-          <h2 className="text-xl font-bold mb-4">Trends for you</h2>
           {trendsData.map((trend, index) => (
             <div key={index}>
               {index > 0 && <hr className="border-t border-gray-600 my-4" />}

@@ -13,76 +13,80 @@ const Nav = () => {
   return (
     <header className="fixed top-0 left-0 w-[320px] h-screen bg-black text-white font-serif shadow-md flex flex-col justify-between p-6">
       {/* Logo Section */}
-      <div className="logo mb-8 pl-12">
+      <div className="logo pl-12">
         <Link to="/" className="flex items-center space-x-3">
-          <span className="ml-[20px] text-3xl font-bold hover:bg-gray-600 rounded-[50%] p-2">X</span>
+          <img
+            src="/images/x logo.png"
+            alt=""
+            className="h-8 w-8 ml-7 font-bold  hover:bg-gray-800 rounded-[20px]"
+          />
         </Link>
       </div>
 
       {/* Navigation Section */}
-      <nav className="flex flex-col space-y-2 pl-[60px]">
+      <nav className="flex flex-col space-y-4 pl-[60px] font-bold">
         <Link
           to="/"
-          className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-800 rounded-md"
+          className="flex items-center space-x-3 px-4 py-2 hover:bg-gray-950 rounded-[20px]"
         >
-          <HomeIcon className="w-6 h-6" />
-          <span>Home</span>
+          <HomeIcon className="w-7 h-7" />
+          <span className="text-[18px]">Home</span>
         </Link>
         <Link
           to="/explore"
-          className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-800 rounded-md"
+          className="flex items-center space-x-3 px-4 py-2 hover:bg-gray-950 rounded-[20px]"
         >
-          <MagnifyingGlassIcon className="w-6 h-6" />
-          <span>Explore</span>
+          <MagnifyingGlassIcon className="w-7 h-7" />
+          <span className="text-[18px]">Explore</span>
         </Link>
         <Link
           to="/notifications"
-          className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-800 rounded-md"
+          className="flex items-center space-x-3 px-4 py-2 hover:bg-gray-950 rounded-[20px]"
         >
-          <BellIcon className="w-6 h-6" />
-          <span>Notifications</span>
+          <BellIcon className="w-7 h-7" />
+          <span className="text-[18px]">Notifications</span>
         </Link>
         <Link
           to="/messages"
-          className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-800 rounded-md"
+          className="flex items-center space-x-3 px-4 py-2 hover:bg-gray-950 rounded-[20px]"
         >
-          <EnvelopeIcon className="w-6 h-6" />
-          <span>Messages</span>
+          <EnvelopeIcon className="w-7 h-7" />
+          <span className="text-[18px]">Messages</span>
         </Link>
         <Link
           to="/grok"
-          className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-800 rounded-md"
+          className="flex items-center space-x-3 px-4 py-2 hover:bg-gray-950 rounded-[20px]"
         >
-          <UserGroupIcon className="w-6 h-6" />
-          <span>Grok</span>
+          <UserGroupIcon className="w-7 h-7" />
+          <span className="text-[18px]">Grok</span>
         </Link>
         <Link
           to="/profile"
-          className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-800 rounded-md"
+          className="flex items-center space-x-3 px-4 py-2 hover:bg-gray-950 rounded-[20px]"
         >
-          <UserIcon className="w-6 h-6" />
-          <span>Profile</span>
+          <UserIcon className="w-7 h-7" />
+          <span className="text-[18px]">Profile</span>
         </Link>
         <Link
           to="/more"
-          className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-800 rounded-md"
+          className="flex items-center space-x-3 px-4 py-2 hover:bg-gray-950 rounded-[20px]"
         >
-          <EllipsisHorizontalIcon className="w-6 h-6" />
-          <span>More</span>
+          <EllipsisHorizontalIcon className="w-7 h-7" />
+          <span className="text-[18px]">More</span>
         </Link>
       </nav>
 
       {/* Post Button and Profile Section */}
-      <div className="flex flex-col space-y-6 pl-12">
+      <div className="flex flex-col space-y-4 pl-12">
         {/* Post Button */}
         <Link to="/post">
-          <button className="bg-white text-black px-4 py-2 rounded-full hover:bg-blue-600 transition w-full">
+          <button className="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition w-[220px]">
             Post
           </button>
         </Link>
 
         {/* Profile Section */}
-        <div className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-800 rounded-md">
+        <div className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-950 rounded-[20px]">
           {/* Profile Picture */}
           <img
             src="/images/jay.jpg"

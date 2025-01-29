@@ -1,21 +1,48 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  ChatBubbleLeftEllipsisIcon,
+  ArrowPathRoundedSquareIcon,
+  HeartIcon,
+  EyeIcon,
+  BookmarkIcon,
+  ShareIcon,
+  CameraIcon,
+  PhotoIcon,
+  ChartBarIcon,
+  FaceSmileIcon,
+  CalendarDaysIcon,
+} from "@heroicons/react/24/outline";
+
+// Add libraries for date picker
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Home = () => {
   const [likes, setLikes] = useState({ post1: 478, post2: 478 });
   const [comments, setComments] = useState({ post1: 15, post2: 15 });
   const [retweets, setRetweets] = useState({ post1: 10, post2: 10 });
+  const [emoji, setEmoji] = useState("");
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
 
-  const handleLike = (post) => {
-    setLikes((prev) => ({ ...prev, [post]: prev[post] + 1 }));
+  const handleStatChange = (post, statType) => {
+    if (statType === "like") {
+      setLikes((prev) => ({ ...prev, [post]: prev[post] + 1 }));
+    } else if (statType === "comment") {
+      setComments((prev) => ({ ...prev, [post]: prev[post] + 1 }));
+    } else if (statType === "retweet") {
+      setRetweets((prev) => ({ ...prev, [post]: prev[post] + 1 }));
+    }
   };
 
-  const handleComment = (post) => {
-    setComments((prev) => ({ ...prev, [post]: prev[post] + 1 }));
+  const handleEmojiSelect = (emoji) => {
+    setEmoji(emoji);
   };
 
-  const handleRetweet = (post) => {
-    setRetweets((prev) => ({ ...prev, [post]: prev[post] + 1 }));
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setShowDatePicker(false);
   };
 
   const posts = [
@@ -51,116 +78,139 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-black text-white flex justify-center items-center font-serif">
-      {/* Feed Container */}
-      <div className=" mx-auto w-[550px] bg-black px-4  border-l-1 border-r-1 border-gray-600 pl-15">
-        {/* Navigation */}
-        <nav className=" flex justify-around  bg-black p-2 rounded-lg">
+      <div className="relative w-[556px] mx-auto bg-black px-4 border-l-1 border-r-1 border-gray-600 pl-12">
+        {/* Fixed Navigation */}
+        <nav className="fixed top-0 left-[323px] w-[550px] bg-black z-10 p-2 flex justify-around border-b border-gray-600">
           <Link to="/" className="text-white font-bold border-b-4 border-blue-500">
             For You
           </Link>
-          <Link to="/" className="text-white font-bold border-b-4 border-blue-500">
+          <Link to="/" className="text-white font-bold hover:border-b-4 border-blue-500">
             Following
           </Link>
         </nav>
 
-        {/* Post Input */}
-        <div className=" bg-black border border-gray-600 p-4 rounded-[20px]  mb-10 ">
-          <div className="flex items-center mb-4">
-            <Link to="https://x.com/IrmiyaJeth79445">
-              <img
-                src="./images/jay.jpg"
-                alt="profile"
-                className="w-10 h-10 rounded-[50%]"
-              />
-            </Link>
-            <textarea
-              className="ml-4 w-full p-2 rounded-lg resize-none text-white  placeholder-gray-500 focus:outline-none"
-              placeholder="What's happening?!"
-            ></textarea>
-          </div>
-          <div className="flex justify-between items-center">
-            <div className="icons flex space-x-4 text-blue-800">
-              <i className="fas fa-camera"></i>
-              <i className="fas fa-image"></i>
-              <i className="fas fa-poll-h"></i>
-              <i className="fas fa-emoji"></i>
-              <i className="fas fa-calendar"></i>
+        {/* Content Section */}
+        <div className="pt-[60px] pb-[20px] overflow-y-auto">
+          {/* Post Input */}
+          <div className="bg-black border border-gray-600 p-4 rounded-[20px] mb-10">
+            <div className="flex items-center mb-4">
+              <Link to="https://x.com/IrmiyaJeth79445">
+                <img
+                  src="./images/jay.jpg"
+                  alt="profile"
+                  className="w-10 h-10 rounded-full"
+                />
+              </Link>
+              <textarea
+                className="ml-4 w-full p-2 rounded-lg resize-none text-white bg-black placeholder-gray-500 focus:outline-none"
+                placeholder="What's happening?!"
+              ></textarea>
             </div>
-            <button className="bg-gray-600 text-black px-4 py-1 rounded-[20px] hover:bg-gray-200">
-              Post
-            </button>
-          </div>
-        </div>
-
-        {/* Posts */}
-        {posts.map((post, index) => (
-          <div key={post.id}>
-            {index > 0 && (
-              <hr className=" border-gray-600 my-8 w-full" />
-            )}
-            <div className="post bg-black border border-gray-600 p-4 rounded-[20px] text-[15px]">
-              <div className="content mb-4">
-                <h3 className="font-bold">{post.author}</h3>
-                <p className="text-sm text-gray-400">{post.username}</p>
-                <p className="mt-2">{post.content}</p>
-                <div className="hashtags mt-2">
-                  {post.hashtags.map((hashtag, idx) => (
-                    <Link
-                      key={idx}
-                      to={`https://x.com/hashtag/${hashtag.slice(1)}?src=hashtag_click`}
-                      className="text-blue-500 text-sm mr-2"
-                    >
-                      {hashtag}
-                    </Link>
-                  ))}
+            <div className="flex justify-between items-center">
+              <div className="icons flex space-x-4 text-blue-400">
+                {/* Camera Icon: File Input for Images/Videos */}
+                <label htmlFor="file-input" className="cursor-pointer">
+                  <CameraIcon className="w-5 h-5" />
+                </label>
+                <input
+                  id="file-input"
+                  type="file"
+                  accept="image/*,video/*"
+                  className="hidden"
+                />
+                {/* Photo Icon: File Input for Images */}
+                <label htmlFor="photo-input" className="cursor-pointer">
+                  <PhotoIcon className="w-5 h-5" />
+                </label>
+                <input
+                  id="photo-input"
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                />
+                {/* ChartBar Icon: Placeholder for statistics/graph (example) */}
+                <ChartBarIcon className="w-5 h-5 cursor-pointer" />
+                {/* FaceSmile Icon: Placeholder for emoji picker */}
+                <div className="relative">
+                  <FaceSmileIcon className="w-5 h-5 cursor-pointer" onClick={() => handleEmojiSelect("😊")} />
+                  {emoji && <span className="absolute left-8 bottom-0 text-xl">{emoji}</span>}
+                </div>
+                {/* Calendar Icon: Date Picker */}
+                <div className="relative">
+                  <CalendarDaysIcon
+                    className="w-5 h- cursor-pointer"
+                    onClick={() => setShowDatePicker(!showDatePicker)}
+                  />
+                  {showDatePicker && (
+                    <DatePicker
+                      selected={selectedDate}
+                      onChange={handleDateChange}
+                      inline
+                      className="absolute top-8 left-0 bg-white text-black rounded-md shadow-lg"
+                    />
+                  )}
                 </div>
               </div>
-              <div className="video mb-4">
-                <video
-                  src={post.videoSrc}
-                  controls
-                  autoPlay
-                  muted
-                  loop
-                  className="w-full rounded-lg"
-                ></video>
-              </div>
-              <div className="actions flex justify-between items-center text-gray-500">
-                <button
-                  onClick={() => handleComment(post.id)}
-                  className="flex items-center space-x-1 text-gray-600"
-                >
-                  <i className="fas fa-comment"></i>
-                  <small>{post.stats.comments}</small>
-                </button>
-                <button
-                  onClick={() => handleRetweet(post.id)}
-                  className="flex items-center space-x-1 text-gray-600"
-                >
-                  <i className="fas fa-retweet"></i>
-                  <small>{post.stats.retweets}</small>
-                </button>
-                <button
-                  onClick={() => handleLike(post.id)}
-                  className="flex items-center space-x-1 text-gray-600"
-                >
-                  <i className="fas fa-thumbs-up"></i>
-                  <small>{post.stats.likes}</small>
-                </button>
-                <button className="flex items-center space-x-1 text-gray-600">
-                  <i className="fas fa-eye"></i>
-                  <small>1.5k</small>
-                </button>
-                <button className="text-gray-600">
-                  <i className="fas fa-bookmark"></i>
-                </button>
-                <button className="text-gray-600">
-                  <i className="fas fa-share"></i>
-                </button>
-              </div>
+              <button className="bg-gray-600 text-black px-4 py-1 rounded-[20px] hover:bg-gray-200">
+                Post
+              </button>
             </div>
           </div>
-        ))}
+
+          {/* Posts */}
+          {posts.map((post) => (
+            <div key={post.id} className="mb-6 pb-6 border-b border-gray-600 last:border-none">
+              <div className="post bg-black border border-gray-600 p-4 rounded-[20px] text-[15px]">
+                <div className="content mb-4">
+                  <h3 className="font-bold">{post.author}</h3>
+                  <p className="text-sm text-gray-400">{post.username}</p>
+                  <p className="mt-2">{post.content}</p>
+                  <div className="hashtags mt-2">
+                    {post.hashtags.map((hashtag, idx) => (
+                      <Link key={idx} to={`https://x.com/hashtag/${hashtag.slice(1)}?src=hashtag_click`} className="text-blue-500 text-sm mr-2">
+                        {hashtag}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div className="video mb-4">
+                  <video
+                    src={post.videoSrc}
+                    controls
+                    autoPlay
+                    muted
+                    loop
+                    className="w-full rounded-lg"
+                  ></video>
+                </div>
+                <div className="actions flex justify-between items-center text-gray-500">
+                  <button onClick={() => handleStatChange(post.id, "comment")} className="flex items-center space-x-1 text-gray-600">
+                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5" />
+                    <small>{post.stats.comments}</small>
+                  </button>
+                  <button onClick={() => handleStatChange(post.id, "retweet")} className="flex items-center space-x-1 text-gray-600">
+                    <ArrowPathRoundedSquareIcon className="w-5 h-5" />
+                    <small>{post.stats.retweets}</small>
+                  </button>
+                  <button onClick={() => handleStatChange(post.id, "like")} className="flex items-center space-x-1 text-gray-600">
+                    <HeartIcon className="w-5 h-5" />
+                    <small>{post.stats.likes}</small>
+                  </button>
+                  <button className="flex items-center space-x-1 text-gray-600">
+                    <EyeIcon className="w-5 h-5" />
+                    <small>1.5k</small>
+                  </button>
+                  <button className="text-gray-600">
+                    <BookmarkIcon className="w-5 h-5" />
+                  </button>
+                  <button className="text-gray-600">
+                    <ShareIcon className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
