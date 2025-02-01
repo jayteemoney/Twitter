@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 const trendsData = [
@@ -6,7 +5,6 @@ const trendsData = [
   { category: "Technology", tag: "#knacking", posts: "20k posts" },
   { category: "Entertainment", tag: "RIPLEGEND", posts: "110k posts" },
   { category: "Entertainment", tag: "topher", posts: "500k posts" },
- 
 ];
 
 const Explore = () => {
@@ -14,8 +12,9 @@ const Explore = () => {
     <div className="min-h-screen bg-black text-white flex justify-center items-center">
       {/* Trends Container */}
       <div className="trends-container mx-auto w-[550px] bg-black p-4 rounded-lg border-l-1 border-r-1 border-gray-600 pl-12">
+        
         {/* Navigation */}
-        <div className="search-form">
+        <div className="search-form mb-6">
           <input
             type="search"
             id="search-box"
@@ -23,7 +22,8 @@ const Explore = () => {
             className="w-full p-2 rounded-lg bg-gray-900 text-white placeholder-gray-500 border border-gray-600 focus:outline-none"
           />
         </div>
-        <nav className="navigation flex justify-around mb-6 bg-black p-2 ">
+
+        <nav className="navigation flex justify-around mb-6 bg-black p-2">
           <Link to="/home" className="text-white font-bold border-b-3 border-blue-500">
             For You
           </Link>
@@ -44,14 +44,13 @@ const Explore = () => {
         {/* Trends Section */}
         <div className="Trends">
           {trendsData.map((trend, index) => (
-            <div key={index}>
-              {index > 0 && <hr className="border-t border-gray-600 my-4" />}
+            <div key={index} className="trend-item">
               <Link
                 to={`/trends/${trend.tag.replace("#", "").toLowerCase()}`}
                 className="block mb-4 hover:bg-gray-800 p-2 rounded-lg transition-all"
               >
                 <h5 className="text-gray-400">{trend.category}. Trending</h5>
-                <h3 className="text-lg font-bold text-blue-500">{trend.tag}</h3>
+                <h3 className="text-lg font-bold text-white">{trend.tag}</h3>
                 <h5 className="text-gray-400">{trend.posts}</h5>
               </Link>
             </div>
