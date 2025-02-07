@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 const trendsData = [
-  { category: "Entertainment", tag: "#BBnaija", posts: "500k posts" },
-  { category: "Technology", tag: "#knacking", posts: "20k posts" },
-  { category: "Entertainment", tag: "RIPLEGEND", posts: "110k posts" },
-  { category: "Entertainment", tag: "topher", posts: "500k posts" },
+  { category: "Entertainment", tag: "#BBnaija", posts: "500k posts", imagePath: "/images/bbnaija.jpg" },
+  { category: "Technology", tag: "#knacking", posts: "20k posts", imagePath: "/images/knacking.jpg" },
+  { category: "Entertainment", tag: "RIPLEGEND", posts: "110k posts", imagePath: "/images/riplegend.jpg" },
+  { category: "Entertainment", tag: "topher", posts: "500k posts", imagePath: "/images/topher.jpg" },
 ];
 
 const Explore = () => {
@@ -47,15 +47,20 @@ const Explore = () => {
         {/* Trends Section */}
         <div className="mt-4 p-4">
           {trendsData.map((trend, index) => (
-            <div key={index} className="mb-4">
+            <div key={index} className="mb-4 flex items-center">
               <Link
                 to={`/trends/${trend.tag.replace("#", "").toLowerCase()}`}
-                className="block hover:bg-gray-800 p-2 rounded-lg transition-all"
+                className="block hover:bg-gray-800 p-2 rounded-lg transition-all flex-grow"
               >
                 <h5 className="text-gray-400">{trend.category}. Trending</h5>
                 <h3 className="text-lg font-bold text-white">{trend.tag}</h3>
                 <h5 className="text-gray-400">{trend.posts}</h5>
               </Link>
+              <img
+                src={trend.imagePath}
+                alt={trend.tag}
+                className="w-16 h-16 object-cover rounded-lg ml-4"
+              />
             </div>
           ))}
         </div>
