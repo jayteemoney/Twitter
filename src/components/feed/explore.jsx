@@ -29,7 +29,7 @@ const Explore = () => {
             <Link to="/explore" className="text-white text-sm border-b-2 border-blue-500">
               For You
             </Link>
-            <Link to="/" className="text-white text-sm hover:border-b-2 hover:border-blue-500">Trending</Link>
+            <Link to="/" className="text-white text-sm hover:border-b-2 hover:border-blue-500">Trending Now</Link>
             <Link to="/explore" className="text-white text-sm hover:border-b-2 hover:border-blue-500">News</Link>
             <Link to="/explore" className="text-white text-sm hover:border-b-2 hover:border-blue-500">Sports</Link>
             <Link to="/explore" className="text-white text-sm hover:border-b-2 hover:border-blue-500">Entertainment</Link>
