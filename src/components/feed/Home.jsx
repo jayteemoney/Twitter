@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   ChatBubbleLeftEllipsisIcon,
@@ -13,8 +13,6 @@ import {
   FaceSmileIcon,
   CalendarDaysIcon,
 } from "@heroicons/react/24/outline";
-
-// Add libraries for date picker
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -25,6 +23,7 @@ const Home = () => {
   const [emoji, setEmoji] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const videoRefs = useRef({});
 
   const handleStatChange = (post, statType) => {
     if (statType === "like") {
@@ -53,7 +52,7 @@ const Home = () => {
       content:
         "With Agent Ben's mission accomplished, Handi, Ozee, and Wanni are left hunting high and low for their missing crates of eggs.",
       hashtags: ["#BBNaija", "#BBNaijaS9"],
-      videoSrc: "/img/BBnaija.mp4",
+      videoSrc: "/images/Download (1).mp4",
       stats: {
         comments: comments.post1,
         retweets: retweets.post1,
@@ -67,7 +66,7 @@ const Home = () => {
       content:
         "Colgate task is LIVE TODAY!!! Follow @colgate_ng and stand a chance to win a 50k cash prize. Don't sleep on this one.",
       hashtags: ["#DoYangaWithYourSmile"],
-      videoSrc: "/img/colgate.mp4",
+      videoSrc: "/images/colgate.mp4",
       stats: {
         comments: comments.post2,
         retweets: retweets.post2,
@@ -76,9 +75,33 @@ const Home = () => {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = videoRefs.current[entry.target.dataset.id];
+          if (video) {
+            if (entry.isIntersecting) {
+              video.play();
+            } else {
+              video.pause();
+            }
+          }
+        });
+      },
+      { threshold: 0.5 } // Trigger when at least 50% of the video is in view
+    );
+
+    Object.values(videoRefs.current).forEach((video) => {
+      if (video) observer.observe(video);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white flex justify-center items-center font-serif">
-      <div className="relative w-[556px] mx-auto bg-black px-4 border-l-1 border-r-1 border-gray-600 pl-12">
+      <div className="relative w-[556px] mx-auto bg-black px-4 border-l border-r border-gray-600 pl-12">
         {/* Fixed Navigation */}
         <nav className="fixed top-0 left-[323px] w-[550px] bg-black z-10 p-2 flex justify-around border-b border-gray-600">
           <Link to="/" className="text-white font-bold border-b-4 border-blue-500">
@@ -95,11 +118,7 @@ const Home = () => {
           <div className="bg-black border border-gray-600 p-4 rounded-[20px] mb-10">
             <div className="flex items-center mb-4">
               <Link to="https://x.com/IrmiyaJeth79445">
-                <img
-                  src="./images/jay.jpg"
-                  alt="profile"
-                  className="w-10 h-10 rounded-full"
-                />
+                <img src="./images/jay.jpg" alt="profile" className="w-10 h-10 rounded-full" />
               </Link>
               <textarea
                 className="ml-4 w-full p-2 rounded-lg resize-none text-white bg-black placeholder-gray-500 focus:outline-none"
@@ -108,52 +127,27 @@ const Home = () => {
             </div>
             <div className="flex justify-between items-center">
               <div className="icons flex space-x-4 text-blue-400">
-                {/* Camera Icon: File Input for Images/Videos */}
                 <label htmlFor="file-input" className="cursor-pointer">
                   <CameraIcon className="w-5 h-5" />
                 </label>
-                <input
-                  id="file-input"
-                  type="file"
-                  accept="image/*,video/*"
-                  className="hidden"
-                />
-                {/* Photo Icon: File Input for Images */}
+                <input id="file-input" type="file" accept="image/*,video/*" className="hidden" />
                 <label htmlFor="photo-input" className="cursor-pointer">
                   <PhotoIcon className="w-5 h-5" />
                 </label>
-                <input
-                  id="photo-input"
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                />
-                {/* ChartBar Icon: Placeholder for statistics/graph (example) */}
+                <input id="photo-input" type="file" accept="image/*" className="hidden" />
                 <ChartBarIcon className="w-5 h-5 cursor-pointer" />
-                {/* FaceSmile Icon: Placeholder for emoji picker */}
                 <div className="relative">
                   <FaceSmileIcon className="w-5 h-5 cursor-pointer" onClick={() => handleEmojiSelect("😊")} />
                   {emoji && <span className="absolute left-8 bottom-0 text-xl">{emoji}</span>}
                 </div>
-                {/* Calendar Icon: Date Picker */}
                 <div className="relative">
-                  <CalendarDaysIcon
-                    className="w-5 h- cursor-pointer"
-                    onClick={() => setShowDatePicker(!showDatePicker)}
-                  />
+                  <CalendarDaysIcon className="w-5 h- cursor-pointer" onClick={() => setShowDatePicker(!showDatePicker)} />
                   {showDatePicker && (
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={handleDateChange}
-                      inline
-                      className="absolute top-8 left-0 bg-white text-black rounded-md shadow-lg"
-                    />
+                    <DatePicker selected={selectedDate} onChange={handleDateChange} inline className="absolute top-8 left-0 bg-white text-black rounded-md shadow-lg" />
                   )}
                 </div>
               </div>
-              <button className="bg-gray-600 text-black px-4 py-1 rounded-[20px] hover:bg-gray-200">
-                Post
-              </button>
+              <button className="bg-gray-600 text-black px-4 py-1 rounded-[20px] hover:bg-gray-200">Post</button>
             </div>
           </div>
 
@@ -165,19 +159,13 @@ const Home = () => {
                   <h3 className="font-bold">{post.author}</h3>
                   <p className="text-sm text-gray-400">{post.username}</p>
                   <p className="mt-2">{post.content}</p>
-                  <div className="hashtags mt-2">
-                    {post.hashtags.map((hashtag, idx) => (
-                      <Link key={idx} to={`https://x.com/hashtag/${hashtag.slice(1)}?src=hashtag_click`} className="text-blue-500 text-sm mr-2">
-                        {hashtag}
-                      </Link>
-                    ))}
-                  </div>
                 </div>
                 <div className="video mb-4">
                   <video
+                    ref={(el) => (videoRefs.current[post.id] = el)}
+                    data-id={post.id}
                     src={post.videoSrc}
                     controls
-                    autoPlay
                     muted
                     loop
                     className="w-full rounded-lg"
