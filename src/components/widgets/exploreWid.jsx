@@ -1,5 +1,5 @@
-import Following from "./following";
-import Footer from "./footer";
+import Following from "../others/following";
+import Footer from "../others/footer";
 
 const ExploreWid = () => {
   return (

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import TrendingList from "../others/TrendingList";
 
 const trendsData = [
   { category: "News", title: "Elon Musk’s DOGE Targets Federal Wealth Disparities", time: "21 hours ago", posts: "63K posts", imagePath: "/images/elon.jpeg" },
@@ -11,7 +12,7 @@ const Explore = () => {
   return (
     <div className="min-h-screen bg-black text-white flex justify-center items-center">
       {/* Trends Container */}
-      <div className="fixed top-0 left-1/2 transform -translate-x-1/2 w-[550px] h-full border-l border-r border-gray-600 bg-black  overflow-y-auto">
+      <div className="fixed top-0 left-1/2 transform -translate-x-1/2 w-[550px] h-full border-l border-r border-gray-600 bg-black overflow-y-auto">
         
         {/* Header Section with Full-width Border */}
         <div className="sticky top-0 z-10 bg-black p-4 border-b border-gray-600">
@@ -58,7 +59,13 @@ const Explore = () => {
             </div>
           ))}
         </div>
+        <div className="border-b border-gray-600 w-full"></div>
+        <div className="flex justify-between min-h-screen bg-black">
+        <TrendingList />
+         </div>
+
       </div>
+      
     </div>
   );
 };
