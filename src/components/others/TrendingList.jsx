@@ -8,7 +8,7 @@ const trends = [
   
   const TrendingList = () => {
     return (
-      <div className="w-[350px] bg-black text-white p-4 space-y-4">
+      <div className=" text-white p-4 space-y-4">
         {trends.map((trend, index) => (
           <div 
             key={index} 
@@ -20,9 +20,7 @@ const trends = [
               <h3 className="text-[15px] font-semibold">{trend.title}</h3>
               <h5 className="text-xs text-gray-500">{trend.posts}</h5>
             </div>
-  
-            {/* Right Button (Aligned to Edge) */}
-            <button className="text-gray-500 hover:text-gray-300 ml-auto">
+            <button className="text-gray-500 hover:text-gray-300">
               •••
             </button>
           </div>

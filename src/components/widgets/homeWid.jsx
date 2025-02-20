@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Following from "../others/following";
-import Footer from "../others/footer";
+import Footer from "./footer";
 
 const HomeWid = () => {
   const [isSubscribed, setIsSubscribed] = useState(false);

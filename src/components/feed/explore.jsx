@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import TrendingList from "../others/TrendingList";
+import WhoToFollow from "../others/WhoToFollow";
 
 const trendsData = [
   { category: "News", title: "Elon Musk’s DOGE Targets Federal Wealth Disparities", time: "21 hours ago", posts: "63K posts", imagePath: "/images/elon.jpeg" },
@@ -10,11 +11,11 @@ const trendsData = [
 
 const Explore = () => {
   return (
-    <div className="min-h-screen bg-black text-white flex justify-center items-center">
+    <div className="min-h-screen bg-black text-white flex justify-center">
       {/* Trends Container */}
-      <div className="fixed top-0 left-1/2 transform -translate-x-1/2 w-[550px] h-full border-l border-r border-gray-600 bg-black overflow-y-auto">
+      <div className="w-[550px] border-l border-r border-gray-600 bg-black">
         
-        {/* Header Section with Full-width Border */}
+        {/* Header Section */}
         <div className="sticky top-0 z-10 bg-black p-4 border-b border-gray-600">
           {/* Search Box */}
           <div className="mb-2">
@@ -59,13 +60,12 @@ const Explore = () => {
             </div>
           ))}
         </div>
-        <div className="border-b border-gray-600 w-full"></div>
-        <div className="flex justify-between min-h-screen bg-black">
-        <TrendingList />
-         </div>
 
+        <div className="border-b border-gray-600 w-full"></div>
+        <TrendingList />
+        <div className="border-b border-gray-600 w-full"></div>
+        <WhoToFollow />
       </div>
-      
     </div>
   );
 };
