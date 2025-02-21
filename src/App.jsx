@@ -4,6 +4,8 @@ import Home from "./components/feed/Home";
 import Widgets from "./pages/widget";
 import Explore from "./components/feed/explore";
 import ExploreWid from "./components/widgets/exploreWid";
+import Profile from "./components/feed/profile";
+import ProfileWid from "./components/widgets/profileWid";
 
 const App = () => {
   return (
@@ -15,20 +17,22 @@ const App = () => {
         </div>
 
         {/* Main Content and Widgets Container */}
-        <div className="ml-[300px] flex h-full w-full overflow-y-auto">
-          {/* Main Content */}
-          <div className="w-[600px] bg-black">
+        <div className="ml-[300px] flex h-full w-full overflow-y-auto gap-x-6 px-6">
+          {/* Main Content (Profile, Home, Explore) */}
+          <div className="w-[600px] bg-black border-r border-gray-700">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/explore" element={<Explore />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>
 
-          {/* Widgets */}
-          <div className="w-[450px] bg-black text-white ">
+          {/* Widgets (ProfileWid, HomeWid, ExploreWid) */}
+          <div className="w-[450px] bg-black text-white">
             <Routes>
               <Route path="/" element={<Widgets />} />
               <Route path="/explore" element={<ExploreWid />} />
+              <Route path="/profile" element={<ProfileWid />} />
             </Routes>
           </div>
         </div>
