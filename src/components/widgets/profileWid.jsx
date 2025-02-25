@@ -29,7 +29,7 @@ const ProfileWid = () => {
       </div>
 
       {/* Main Content Section */}
-      <div className="w-[300px] overflow-y-auto pt-[80px] pr-[140px]">
+      <div className="w-[450px] overflow-y-auto pt-[80px] pr-[140px]">
         {/* Subscribe Section */}
         <div className="bg-black shadow-md rounded-[20px] p-4 mb-4 border border-gray-600">
           <h3 className="text-lg font-semibold">Subscribe to Premium</h3>

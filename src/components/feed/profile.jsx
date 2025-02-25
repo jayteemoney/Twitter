@@ -1,21 +1,46 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Post from "../others/Posts";
 
 const Profile = () => {
+  const coverImages = [
+    "/images/sunset.jpg",
+    "/images/jay.jpg",
+    "/images/post4.jpg",
+  ];
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % coverImages.length);
+    }, 10000); // Change every 2 seconds
+
+    return () => clearInterval(interval);
+  }, );
+
   return (
     <div className="relative min-h-screen bg-black text-white border-l border-r border-gray-700 max-w-[560px] mx-auto">
+      
       {/* Header */}
       <div className="sticky top-0 bg-black p-3 border-b border-gray-700">
         <h2 className="text-lg font-semibold">Jethro Irmiya</h2>
         <p className="text-sm text-gray-400">184 posts</p>
       </div>
 
-      {/* Cover Photo */}
-      <div className="relative w-full h-36 bg-gray-800">
+      {/* Cover Photo (Background Image with Auto Change) */}
+      <div
+        className="relative w-full h-36 bg-gray-800 transition-all duration-1000 ease-in-out"
+        style={{
+          backgroundImage: `url(${coverImages[currentImageIndex]})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         {/* Profile Picture */}
         <div className="absolute -bottom-10 left-4 w-24 h-24 border-4 border-black rounded-full overflow-hidden z-10">
           <img
-            src="/images/profile-pic.jpg"  
+            src="/images/jay.jpg"  
             alt="Profile"
             className="w-full h-full object-cover"
           />
@@ -35,7 +60,9 @@ const Profile = () => {
         <h2 className="text-xl font-bold">Jethro Irmiya</h2>
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-400">@dev_jaytee</span>
-          <span className="bg-blue-500 text-xs px-2 py-1 rounded-full font-semibold">Get verified</span>
+          <span className="bg-blue-500 text-xs px-2 py-1 rounded-full font-semibold">
+            Get verified
+          </span>
         </div>
 
         {/* Bio */}
@@ -49,8 +76,12 @@ const Profile = () => {
 
         {/* Follow Counts */}
         <div className="flex gap-4 mt-2 text-sm">
-          <span><strong className="text-white">119</strong> Following</span>
-          <span><strong className="text-white">49</strong> Followers</span>
+          <span>
+            <strong className="text-white">119</strong> Following
+          </span>
+          <span>
+            <strong className="text-white">49</strong> Followers
+          </span>
         </div>
       </div>
 
@@ -68,8 +99,10 @@ const Profile = () => {
           </Link>
         ))}
       </div>
-      <Post/>
 
+      {/* Posts Section */}
+      <Post/>
+      
     </div>
   );
 };

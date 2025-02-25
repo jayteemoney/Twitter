@@ -17,28 +17,54 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Home = () => {
-  // State Management
-  const [likes, setLikes] = useState({ post1: 478, post2: 478 });
-  const [comments, setComments] = useState({ post1: 15, post2: 15 });
-  const [retweets, setRetweets] = useState({ post1: 10, post2: 10 });
+    // State Management
+  const [likes, setLikes] = useState({});
+  const [comments, setComments] = useState({});
+  const [retweets, setRetweets] = useState({});
+  const [showRetweetPopup, setShowRetweetPopup] = useState(null);
+  const [showCommentBox, setShowCommentBox] = useState(null);
   const [emoji, setEmoji] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const videoRefs = useRef({});
 
-  // Handle Stat Updates
-  const handleStatChange = (post, statType) => {
-    if (statType === "like") {
-      setLikes((prev) => ({ ...prev, [post]: prev[post] + 1 }));
-    } else if (statType === "comment") {
-      setComments((prev) => ({ ...prev, [post]: prev[post] + 1 }));
-    } else if (statType === "retweet") {
-      setRetweets((prev) => ({ ...prev, [post]: prev[post] + 1 }));
-    }
+  // Handle Like Toggle
+  const handleLikeToggle = (postId) => {
+    setLikes((prev) => ({
+      ...prev,
+      [postId]: prev[postId] ? 0 : 1, // Toggles between like (1) and unlike (0)
+    }));
   };
 
-  // Handle Date Picker
-  const handleDateChange = (date) => {
+  // Handle Retweet Popup Toggle
+  const handleRetweetClick = (postId) => {
+    setShowRetweetPopup(showRetweetPopup === postId ? null : postId);
+  };
+
+  // Handle Retweet Selection
+  const handleRetweetAction = (postId, type) => {
+    setRetweets((prev) => ({
+      ...prev,
+      [postId]: (prev[postId] || 0) + 1, // Increments retweet count
+    }));
+    setShowRetweetPopup(null); // Close the retweet popup
+    alert(`You selected ${type} for ${postId}`);
+  };
+
+  // Handle Comment Box Toggle
+  const handleCommentClick = (postId) => {
+    setShowCommentBox(showCommentBox === postId ? null : postId);
+  };
+
+  // Handle Comment Submission
+  const handleCommentSubmit = (postId, comment) => {
+    setComments((prev) => ({
+      ...prev,
+      [postId]: [...(prev[postId] || []), comment],
+    }));
+    setShowCommentBox(null); // Close the comment box
+  };
+    const handleDateChange = (date) => {
     setSelectedDate(date);
     setShowDatePicker(false);
   };
@@ -47,6 +73,7 @@ const Home = () => {
   const posts = [
     {
       id: "post1",
+      profilePic: "/images/aisha.jpg",
       author: "Big Brother Naija",
       username: "@BBnaija",
       content: "With Agent Ben's mission accomplished, Handi, Ozee, and Wanni are left hunting high and low for their missing crates of eggs.",
@@ -55,6 +82,7 @@ const Home = () => {
     },
     {
       id: "post2",
+      profilePic: "/images/aisha.jpg",
       author: "Colgate Nigeria",
       username: "@Colgate-ng",
       content: "Colgate task is LIVE TODAY!!! Follow @colgate_ng and stand a chance to win a 50k cash prize. Don't sleep on this one.",
@@ -63,18 +91,21 @@ const Home = () => {
     },
     {
       id: "post3",
+      profilePic: "/images/aisha.jpg",
       author: "Tech Trends",
       username: "@TechTrends",
       content: "AI is evolving at a rapid pace! What are your thoughts on the future of artificial intelligence?",
     },
     {
       id: "post4",
+      profilePic: "/images/aisha.jpg",
       author: "Motivation Daily",
       username: "@MotivateToday",
       content: "Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill",
     },
     {
       id: "post5",
+      profilePic: "/images/aisha.jpg",
       author: "Photography Hub",
       username: "@PhotoWorld",
       content: "Sunset at the beach. Nature's beauty is unmatched. 🌅",
@@ -82,14 +113,15 @@ const Home = () => {
     },
     {
       id: "post6",
+      profilePic: "/images/aisha.jpg",
       author: "Fashion Weekly",
       username: "@FashionTrend",
       content: "Which outfit would you rock? 💃🔥",
       images: [
         "/images/fashion1.jpg",
         "/images/fashion2.jpg",
-        "/images/fashion3.jpg",
-        "/images/fashion4.jpg",
+        "/images/fashion3.png",
+        "/images/fashion4.avif",
       ],
     },
   ];
@@ -120,7 +152,7 @@ const Home = () => {
       <div className="relative w-[557px] mx-auto bg-black px-4 border-l border-r border-gray-600 pl-12">
         
         {/* Navigation */}
-        <nav className="fixed top-0 left-[325px] w-[550px] bg-black z-10 p-2 flex justify-around border-b border-gray-600">
+        <nav className="fixed top-0 left-[325px] w-[550px] bg-black z-10 flex justify-around border-b border-gray-600">
           <Link to="/" className="text-white font-bold border-b-4 border-blue-500">For You</Link>
           <Link to="/" className="text-white font-bold hover:border-b-4 border-blue-500">Following</Link>
         </nav>
@@ -152,7 +184,14 @@ const Home = () => {
 
           {/* Posts */}
           {posts.map((post) => (
-            <div key={post.id} className="mb-6 pb-6 border-b border-gray-600 last:border-none">
+            <div key={post.id} className="mb-6 pb-6 border-b border-gray-600 last:border-none flex space-x-3">
+                           {/* Profile Picture */}
+               <img
+                src={post.profilePic}
+                alt="Profile"
+                 className="w-10 h-10 rounded-full object-cover"
+               />
+              
               <div className="post bg-black border border-gray-600 p-4 rounded-[20px] text-[15px]">
                 <div className="content mb-4">
                   <h3 className="font-bold">{post.author}</h3>
@@ -165,24 +204,61 @@ const Home = () => {
                 )}
 
                 {post.image && <img src={post.image} alt="Post" className="w-full rounded-lg mb-4" />}
+                {post.images && (
+                <div className="grid grid-cols-2 gap-2 mt-4">
+                  {post.images.map((img, index) => (
+                    <img key={index} src={img} alt={`Post ${index}`} className="w-full h-[200px] rounded-lg" />
+                  ))}
+                </div>
+                )}
                 
                 {/* Actions */}
-                <div className="actions flex justify-between items-center text-gray-500">
-                  <button onClick={() => handleStatChange(post.id, "comment")}><ChatBubbleLeftEllipsisIcon className="w-5 h-5" /> {comments[post.id]}</button>
-                  <button onClick={() => handleStatChange(post.id, "retweet")}><ArrowPathRoundedSquareIcon className="w-5 h-5" /> {retweets[post.id]}</button>
-                  <button onClick={() => handleStatChange(post.id, "like")}><HeartIcon className="w-5 h-5" /> {likes[post.id]}</button>
+                <div className="actions flex justify-between items-center text-gray-500 mt-2">
+                  <button onClick={() => handleCommentClick(post.id, "comment")} className="flex items-center">
+                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5 hover:text-blue-500" />
+                    <span className="ml-1">{comments[post.id] || 0}</span>
+                  </button>
+                  
+                  <button onClick={() => handleRetweetClick(post.id, "retweet")} className="flex items-center">
+                    <ArrowPathRoundedSquareIcon className="w-5 h-5 hover:text-green-600" />
+                    <span className="ml-1">{retweets[post.id] || 0}</span>
+                  </button>
+                  
+                  <button onClick={() => handleLikeToggle(post.id, "like")} className="flex items-center">
+                    <HeartIcon className="w-5 h-5 hover:text-pink-500" />
+                    <span className="ml-1">{likes[post.id] || 0}</span>
+                  </button>
+
                   <button className="flex items-center space-x-1 text-gray-600">
-                    <EyeIcon className="w-5 h-5" />
+                    <EyeIcon className="w-5 h-5 hover:text-blue-500" />
                     <small>1.5k</small>
                   </button>
+
                   <button className="text-gray-600">
-                    <BookmarkIcon className="w-5 h-5" />
+                    <BookmarkIcon className="w-5 h-5 hover:text-blue-500" />
                   </button>
+
                   <button className="text-gray-600">
-                    <ShareIcon className="w-5 h-5" />
+                    <ShareIcon className="w-5 h-5 hover:text-blue-500" />
                   </button>
+                  {/* Retweet Popup */}
+                  {showRetweetPopup === post.id && (
+                    <div className="absolute top-6 left-0 w-[100px] bg-gray-800 text-white p-2 rounded-md shadow-md text-xs">
+                      <button onClick={() => handleRetweetAction(post.id, "Retweet")} className="block w-full text-left hover:bg-gray-700 p-1">Retweet</button>
+                      <button onClick={() => handleRetweetAction(post.id, "Quote")} className="block w-full text-left hover:bg-gray-700 p-1">Quote</button>
+                    </div>
+                  )}
+
+                  {/* Comment Box */}
+                  {showCommentBox === post.id && (
+                    <div className="absolute top-8 left-0 w-full bg-gray-800 p-2 rounded-md shadow-md">
+                      <textarea className="w-full p-1 bg-black text-white border border-gray-600 rounded-md" placeholder="Write a comment..."></textarea>
+                      <button onClick={() => handleCommentSubmit(post.id, "Nice post!")} className="w-full mt-2 bg-blue-500 p-1 rounded-md">Comment</button>
+                    </div>
+                  )}
                 </div>
               </div>
+              
             </div>
           ))}
         </div>
