@@ -9,20 +9,10 @@ import {
   EllipsisHorizontalIcon,
 } from "@heroicons/react/24/outline";
 
-const Nav = () => {
+export default function Navigation() {
   return (
-    <header className="fixed top-0 left-0 w-[320px] h-screen bg-black text-white font-serif shadow-md flex flex-col justify-between p-6">
-      {/* Logo Section */}
-      <div className="logo sm:block hidden ">
-        <Link to="/" className="flex items-center space-x-3">
-          <img
-            src="/images/x logo.png"
-            alt=""
-            className="h-8 w-8 ml-4 font-bold  hover:bg-gray-800 rounded-[20px]"
-          />
-        </Link>
-      </div>
-
+    <div>
+       <div className="sm:hidden block">
       {/* Navigation Section */}
       <nav className="w-full p-2 sm:w-[10%] md:w-[20%] bg-black text-white h-auto sm:h-[100vh] 
                           fixed bottom-0 sm:static
@@ -92,40 +82,7 @@ const Nav = () => {
           </div>
         </Link>
       </nav>
-
-      {/* Post Button and Profile Section */}
-      <div className=" flex-col space-y-4 sm:block hidden ">
-        {/* Post Button */}
-        <Link to="/post">
-          <button className=" justify-center items-center bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition w-[30px] md:w-[220px] ">
-            <span className="hidden md:block">post</span>
-            <span className="block md:hidden text-2xl">+</span>
-          </button>
-        </Link>
-
-        {/* Profile Section */}
-        <div className=" items-center space-x-3 sm:block hidden  py-3 hover:bg-gray-950 rounded-[20px]">
-          {/* Profile Picture */}
-          <img
-            src="/images/jay.jpg"
-            alt="Profile"
-            className="rounded-full w-10 h-10"
-          />
-
-          {/* Profile Name and Username */}
-          <div className=" hidden md:block">
-            <div className="flex flex-col">
-            <span className="text-white font-bold text-sm">Jethro Irmiya</span>
-            <span className="text-gray-400 text-sm">@dev_jaytee</span>
-            </div>
-          </div>
-
-          {/* Options Icon */}
-          <EllipsisHorizontalIcon className="w-6 h-6 text-gray-500" />
-        </div>
       </div>
-    </header>
-  );
-};
-
-export default Nav;
+    </div>
+  )
+}

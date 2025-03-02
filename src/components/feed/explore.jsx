@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import TrendingList from "../others/TrendingList";
 import WhoToFollow from "../others/WhoToFollow";
+import Navigation from "./Navigation";
 
 const trendsData = [
   { category: "News", title: "Elon Musk’s DOGE Targets Federal Wealth Disparities", time: "21 hours ago", posts: "63K posts", imagePath: "/images/elon.jpeg" },
@@ -65,6 +66,7 @@ const Explore = () => {
         <TrendingList />
         <div className="border-b border-gray-600 w-full"></div>
         <WhoToFollow />
+        <Navigation/>
       </div>
     </div>
   );

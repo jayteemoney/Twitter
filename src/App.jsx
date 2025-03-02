@@ -13,12 +13,12 @@ const App = () => {
       {/* Main App Container */}
       <div className="flex min-h-screen font-serif bg-black overflow-hidden">
         {/* Sidebar */}
-        <div className="fixed top-0 left-0 h-full w-[300px] bg-black text-white border-r border-gray-700">
+        <div className=" sm:block hidden fixed top-0 left-0 h-auto w-[300px] bg-black text-white border-r border-gray-700">
           <Nav />
         </div>
 
         {/* Main Content and Widgets Container */}
-        <div className="ml-[300px] flex w-full h-full overflow-hidden">
+        <div className="sm:ml-[300px]  flex w-full h-full overflow-hidden">
           {/* Main Content (Profile, Home, Explore) */}
           <div className="w-[600px] h-full  overflow-y-auto">
             <Routes>
@@ -29,7 +29,7 @@ const App = () => {
           </div>
 
           {/* Widgets (ProfileWid, HomeWid, ExploreWid) */}
-          <div className="w-[450px] h-full bg-black text-white overflow-y-auto">
+          <div className="w-[450px] hidden lg:block h-full bg-black text-white overflow-y-auto">
             <Routes>
               <Route path="/" element={<Widgets />} />
               <Route path="/explore" element={<ExploreWid />} />

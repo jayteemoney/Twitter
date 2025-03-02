@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Post from "../others/Posts";
+import Navigation from "./Navigation";
+import Posts from "../others/Posting";
 
 const Profile = () => {
   const coverImages = [
@@ -20,7 +21,7 @@ const Profile = () => {
   }, );
 
   return (
-    <div className="relative min-h-screen bg-black text-white border-l border-r border-gray-700 max-w-[560px] mx-auto">
+    <div className="relative m-h-screen bg-black text-white border-l border-r border-gray-700 max-w-[560px] mx-auto">
       
       {/* Header */}
       <div className="sticky top-0 bg-black p-3 border-b border-gray-700">
@@ -101,7 +102,8 @@ const Profile = () => {
       </div>
 
       {/* Posts Section */}
-      <Post/>
+      <Posts/>
+      <Navigation/>
       
     </div>
   );
