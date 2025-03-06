@@ -11,7 +11,8 @@ const App = () => {
   return (
     <Router>
       {/* Main App Container */}
-      <div className="flex min-h-screen font-serif bg-black overflow-hidden max-w-[1400px] mx-auto">
+      <div className="mx-auto max-w-[1400px]">
+      <div className="flex min-h-screen font-serif bg-black overflow-hidden ">
         {/* Sidebar */}
         <div className=" sm:block hidden fixed top-0 left-0 h-auto w-[300px] bg-black text-white border-r border-gray-700">
           <Nav />
@@ -37,6 +38,7 @@ const App = () => {
             </Routes>
           </div>
         </div>
+      </div>
       </div>
     </Router>
   );
