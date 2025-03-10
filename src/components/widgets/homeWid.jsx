@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Following from "../others/following";
 import Footer from "../others/footer";
+import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/outline";
 
 const HomeWid = () => {
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -20,12 +21,17 @@ const HomeWid = () => {
   return (
     <div className="flex flex-col min-h-screen bg-black">
       {/* Fixed Search Bar */}
-      <div className="fixed top-0 left-[885px] w-[340px] bg-black p-4 z-10">
-        <input
-          type="search"
-          placeholder="Search here..."
-          className="w-full p-2 rounded-[20px] border border-gray-600 "
-        />
+      <div className="relative">
+        <div className="fixed top-0 left-[885px] w-[340px] bg-black p-4 z-10">
+          <div className="relative">
+            <input
+              type="search"
+              className="w-full p-2 pl-10 pr-3 rounded-[20px] border border-gray-600 bg-gray-400"
+            />
+            {/* Magnifying Glass Icon */}
+            <MagnifyingGlassCircleIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-7 h-7 text-gray-600" />
+          </div>
+        </div>
       </div>
 
       {/* Main Content Section */}
