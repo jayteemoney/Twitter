@@ -39,9 +39,7 @@ const Following = () => {
               <div>
                 <div className="flex items-center space-x-1">
                   <span className="font-bold text-sm">{user.name}</span>
-                  {user.verified && (
-                    <span className="text-blue-400">✔</span>
-                  )}
+                  {user.verified && <span className="text-blue-400">✔</span>}
                 </div>
                 <span className="text-gray-400 text-sm">{user.username}</span>
               </div>

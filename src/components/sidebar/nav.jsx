@@ -24,71 +24,52 @@ const Nav = () => {
       </div>
 
       {/* Navigation Section */}
-      <nav className="w-full p-2 sm:w-[10%] md:w-[20%] bg-black text-white h-auto sm:h-[100vh] 
+      <nav
+        className="w-full p-2 sm:w-[10%] md:w-[20%] bg-black text-white h-auto sm:h-[100vh] 
                           fixed bottom-0 sm:static
                           flex sm:flex-col justify-around sm:justify-start 
-                          border-t border-gray-800 sm:border-none sm:gap-1 z-10">
-        <Link
-          to="/"
-          className="w-fit block"
-        >
+                          border-t border-gray-800 sm:border-none sm:gap-1 z-10"
+      >
+        <Link to="/" className="w-fit block">
           <div className="flex items-center p-2 gap-3 pr-4 text-[20px] hover:bg-gray-950  hover:rounded-full">
-          <HomeIcon className="w-7 h-7" />
-          <span className="md:block hidden">Home</span>
+            <HomeIcon className="w-7 h-7" />
+            <span className="md:block hidden">Home</span>
           </div>
         </Link>
-        <Link
-          to="/explore"
-          className="w-fit block"
-        >
+        <Link to="/explore" className="w-fit block">
           <div className="flex items-center p-2 gap-3 pr-4 text-[20px] hover:bg-gray-950  hover:rounded-full">
-          <MagnifyingGlassIcon className="w-7 h-7" />
-          <span className="md:block hidden">Explore</span>
+            <MagnifyingGlassIcon className="w-7 h-7" />
+            <span className="md:block hidden">Explore</span>
           </div>
         </Link>
-        <Link
-          to="/notifications"
-          className="w-fit block"
-        >
+        <Link to="/notifications" className="w-fit block">
           <div className="flex items-center p-2 gap-3 pr-4 text-[20px] hover:bg-gray-950  hover:rounded-full">
-          <BellIcon className="w-7 h-7" />
-          <span className="md:block hidden">Notifications</span>
+            <BellIcon className="w-7 h-7" />
+            <span className="md:block hidden">Notifications</span>
           </div>
         </Link>
-        <Link
-          to="/messages"
-          className="w-fit block"
-        >
+        <Link to="/messages" className="w-fit block">
           <div className="flex items-center p-2 gap-3 pr-4 text-[20px] hover:bg-gray-950  hover:rounded-full">
-          <EnvelopeIcon className="w-7 h-7" />
-          <span className="md:block hidden">Messages</span>
+            <EnvelopeIcon className="w-7 h-7" />
+            <span className="md:block hidden">Messages</span>
           </div>
         </Link>
-        <Link
-          to="/grok"
-          className="w-fit block"
-        >
+        <Link to="/grok" className="w-fit block">
           <div className="flex items-center p-2 gap-3 pr-4 text-[20px] hover:bg-gray-950  hover:rounded-full">
-          <UserGroupIcon className="w-7 h-7" />
-          <span className="md:block hidden">Grok</span>
+            <UserGroupIcon className="w-7 h-7" />
+            <span className="md:block hidden">Grok</span>
           </div>
         </Link>
-        <Link
-          to="/profile"
-          className="w-fit block"
-        >
+        <Link to="/profile" className="w-fit block">
           <div className="flex items-center p-2 gap-3 pr-4 text-[20px] hover:bg-gray-950  hover:rounded-full">
-          <UserIcon className="w-7 h-7" />
-          <span className="md:block hidden">Profile</span>
+            <UserIcon className="w-7 h-7" />
+            <span className="md:block hidden">Profile</span>
           </div>
         </Link>
-        <Link
-          to="/more"
-          className="w-fit block"
-        >
+        <Link to="/more" className="w-fit block">
           <div className="flex items-center p-2 gap-3 pr-4 text-[20px] hover:bg-gray-950  hover:rounded-full">
-          <EllipsisHorizontalIcon className="w-7 h-7" />
-          <span className="md:block hidden">More</span>
+            <EllipsisHorizontalIcon className="w-7 h-7" />
+            <span className="md:block hidden">More</span>
           </div>
         </Link>
       </nav>
@@ -115,8 +96,10 @@ const Nav = () => {
           {/* Profile Name and Username */}
           <div className=" hidden md:block">
             <div className="flex flex-col">
-            <span className="text-white font-bold text-sm">Jethro Irmiya</span>
-            <span className="text-gray-400 text-sm">@dev_jaytee</span>
+              <span className="text-white font-bold text-sm">
+                Jethro Irmiya
+              </span>
+              <span className="text-gray-400 text-sm">@dev_jaytee</span>
             </div>
           </div>
 

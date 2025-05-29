@@ -9,7 +9,7 @@ const Profile = () => {
     "/images/jay.jpg",
     "/images/post4.jpg",
   ];
-  
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -18,11 +18,10 @@ const Profile = () => {
     }, 10000); // Change every 2 seconds
 
     return () => clearInterval(interval);
-  }, );
+  });
 
   return (
     <div className="relative m-h-screen bg-black text-white border-l border-r border-gray-700 max-w-[560px] mx-auto">
-      
       {/* Header */}
       <div className="sticky top-0 bg-black p-3 border-b border-gray-700">
         <h2 className="text-lg font-semibold">Jethro Irmiya</h2>
@@ -41,7 +40,7 @@ const Profile = () => {
         {/* Profile Picture */}
         <div className="absolute -bottom-10 left-4 w-24 h-24 border-4 border-black rounded-full overflow-hidden z-10">
           <img
-            src="/images/jay.jpg"  
+            src="/images/jay.jpg"
             alt="Profile"
             className="w-full h-full object-cover"
           />
@@ -88,23 +87,26 @@ const Profile = () => {
 
       {/* Navigation Tabs */}
       <div className="border-b border-gray-700 flex justify-between text-gray-400 text-sm px-4">
-        {["Posts", "Replies", "Highlights", "Articles", "Media", "Likes"].map((tab, index) => (
-          <Link
-            key={index}
-            to={`/profile/${tab.toLowerCase()}`}
-            className={`py-3 flex-1 text-center ${
-              tab === "Posts" ? "border-b-2 border-blue-500 text-white" : "hover:text-white"
-            }`}
-          >
-            {tab}
-          </Link>
-        ))}
+        {["Posts", "Replies", "Highlights", "Articles", "Media", "Likes"].map(
+          (tab, index) => (
+            <Link
+              key={index}
+              to={`/profile/${tab.toLowerCase()}`}
+              className={`py-3 flex-1 text-center ${
+                tab === "Posts"
+                  ? "border-b-2 border-blue-500 text-white"
+                  : "hover:text-white"
+              }`}
+            >
+              {tab}
+            </Link>
+          )
+        )}
       </div>
 
       {/* Posts Section */}
-      <Posts/>
-      <Navigation/>
-      
+      <Posts />
+      <Navigation />
     </div>
   );
 };

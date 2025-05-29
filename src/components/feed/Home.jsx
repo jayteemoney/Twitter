@@ -6,14 +6,12 @@ import {
   ChartBarIcon,
   FaceSmileIcon,
   CalendarDaysIcon,
-
 } from "@heroicons/react/24/outline";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Posts from "../others/Posting";
 import Navigation from "./Navigation";
-
 
 const Home = () => {
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -62,10 +60,16 @@ const Home = () => {
   return (
     <div className="relative m-h-screen bg-black text-white border-l border-r border-gray-700 max-w-[560px] mx-auto">
       <nav className="fixed top-0 sm:left-[325px] sm:w-[550px] w-full bg-black z-10 flex justify-around border-b border-gray-600">
-        <Link to="/" className="text-white font-bold border-b-4 border-blue-500">
+        <Link
+          to="/"
+          className="text-white font-bold border-b-4 border-blue-500"
+        >
           For You
         </Link>
-        <Link to="/" className="text-white font-bold hover:border-b-4 border-blue-500">
+        <Link
+          to="/"
+          className="text-white font-bold hover:border-b-4 border-blue-500"
+        >
           Following
         </Link>
       </nav>
@@ -137,13 +141,11 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Posts/>
+      <Posts />
 
       <div className="">
-          <Navigation/> 
+        <Navigation />
       </div>
-      
-
     </div>
   );
 };
