@@ -11,7 +11,7 @@ import {
 
 const Nav = () => {
   return (
-    <header className="fixed top-0 left-0 w-[320px] h-screen bg-black text-white font-serif shadow-md flex flex-col justify-between p-6">
+    <header className="fixed top-0 left-0 w-[330px] h-screen bg-black text-white font-serif shadow-md flex flex-col justify-between p-6">
       {/* Logo Section */}
       <div className="logo sm:block hidden ">
         <Link to="/" className="flex items-center space-x-3">
