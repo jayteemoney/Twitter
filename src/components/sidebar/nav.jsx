@@ -18,7 +18,7 @@ const Nav = () => {
           <img
             src="/images/x logo.png"
             alt=""
-            className="h-8 w-8 ml-4 font-bold  hover:bg-gray-800 rounded-[20px]"
+            className="h-8 w-8 ml-4 font-bold  hover:bg-gray-800 rounded-[30px]"
           />
         </Link>
       </div>
