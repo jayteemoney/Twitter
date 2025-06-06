@@ -104,7 +104,7 @@ const Nav = () => {
           </div>
 
           {/* Options Icon */}
-          <EllipsisHorizontalIcon className="w-6 h-6 text-gray-700" />
+          <EllipsisHorizontalIcon className="w-6 h-6 text-gray-800" />
         </div>
       </div>
     </header>
