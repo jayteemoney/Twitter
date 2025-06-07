@@ -14,7 +14,7 @@ import {
 
 const Nav = () => {
   return (
-    <header className="fixed top-0 left-0 w-[330px] h-screen bg-black text-white font-serif shadow-md flex flex-col justify-between p-6">
+    <header className="fixed top-0 left-[150px] w-[330px] h-screen bg-black text-white font-serif shadow-md flex flex-col justify-between p-6">
       {/* Logo Section */}
       <div className="logo sm:block hidden">
         <Link to="/" className="flex items-center space-x-3">
@@ -78,7 +78,7 @@ const Nav = () => {
         <Link to="/premium" className="w-fit block">
           <div className="flex items-center p-2 gap-3 pr-4 text-[20px] hover:bg-gray-950 hover:rounded-full">
             <img
-              src="/images/x logo.png" // Replace with actual Premium icon if different
+              src="/images/x logo.png" 
               alt=""
               className="h-7 w-7"
             />

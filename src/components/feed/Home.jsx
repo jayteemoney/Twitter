@@ -59,7 +59,7 @@ const Home = () => {
 
   return (
     <div className="relative m-h-screen bg-black text-white border-l border-r border-gray-700 max-w-[560px] mx-auto">
-      <nav className="fixed top-0 sm:left-[325px] sm:w-[550px] w-full bg-black z-10 flex justify-around border-b border-gray-600">
+      <nav className="fixed top-0 sm:left-[425px] sm:w-[550px] w-full bg-black z-10 flex justify-around border-b border-gray-600">
         <Link
           to="/"
           className="text-white font-bold border-b-4 border-blue-500"
