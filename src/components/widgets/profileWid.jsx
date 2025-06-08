@@ -20,7 +20,7 @@ const ProfileWid = () => {
   return (
     <div className="flex flex-col min-h-screen bg-black">
       {/* Fixed Search Bar */}
-      <div className="fixed top-0 left-[885px] w-[340px] bg-black p-4 z-10">
+      <div className="fixed top-0 left-[1000px] w-[340px] bg-black p-4 z-10">
         <input
           type="search"
           placeholder="Search here..."
