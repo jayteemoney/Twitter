@@ -26,10 +26,10 @@ const HomeWid = () => {
           <div className="relative">
             <input
               type="search"
-              className="w-full p-2 pl-10 pr-3 rounded-[20px] border border-gray-100 bg-gray-200"
+              className="w-full p-2 rounded-[20px] border border-gray-600  "
             />
             {/* Magnifying Glass Icon */}
-            <MagnifyingGlassCircleIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-7 h-7 text-gray-600" />
+            <MagnifyingGlassCircleIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-7 h-7 text-gray-100" />
           </div>
         </div>
       </div>
