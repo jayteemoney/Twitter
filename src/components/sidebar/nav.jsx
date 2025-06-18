@@ -14,7 +14,7 @@ import {
 
 const Nav = () => {
   return (
-    <header className="fixed top-0 left-[150px] w-[330px] h-screen bg-black text-white font-serif shadow-md flex flex-col justify-between p-6">
+    <header className="fixed top-0 left-[150px] w-[250px] h-screen bg-black text-white font-serif shadow-md flex flex-col justify-between p-6">
       {/* Logo Section */}
       <div className="logo sm:block hidden">
         <Link to="/" className="flex items-center space-x-3">
@@ -116,7 +116,7 @@ const Nav = () => {
         </Link>
 
         {/* Profile Section */}
-        <div className="items-center space-x-3 sm:block hidden py-3 hover:bg-gray-950 rounded-[20px] flex">
+        <div className="items-center space-x-3 sm:block py-3 hover:bg-gray-950 rounded-[20px] flex">
           {/* Profile Picture */}
           <img
             src="/images/jay.jpg"
