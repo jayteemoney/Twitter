@@ -88,7 +88,7 @@ const Nav = () => {
         <Link to="/verified-orgs" className="w-fit block">
           <div className="flex items-center p-2 gap-3 pr-4 text-[20px] hover:bg-gray-950 hover:rounded-full">
             <ShieldCheckIcon className="w-7 h-7" />
-            <span className="md:block hidden">Verified Orgs</span>
+            <span className="md:block hidden">Verified_Orgs</span>
           </div>
         </Link>
         <Link to="/profile" className="w-fit block">
